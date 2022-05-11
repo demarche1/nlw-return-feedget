@@ -1,10 +1,12 @@
 import express from "express";
+import { router } from "./routes";
+import cors from "cors";
 
 const app = express();
 
-app.route("/api").get((_req, res) => {
-  res.send("Hello");
-});
+app.use(express.json());
+app.use(cors());
+app.use(router);
 
 app.listen(3333, () => {
   console.log(`Server is running on http://localhost:${3333}`);
